@@ -10,5 +10,5 @@ document.addEventListener('DOMContentLoaded', function() {
     instance.setDate(new Date());
     instance.gotoDate(new Date());
     console.log(instance);
-    instance.open();
+    // instance.open();
   });
