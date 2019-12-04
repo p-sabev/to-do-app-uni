@@ -30,23 +30,27 @@
     <li class="collection-item">
         <p>
           <label>
-            <input type="submit" class="filled-in" onclick="updateStatus()" />
+            <input type="checkbox" class="filled-in" data-id="'.$task['id'].'" onclick="updateStatus()"/>
             <span><?php echo $task['name']; ?></span>
           </label>
         </p>
     </li>
 <?php    } ?>
 
-<script>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
 function updateStatus() {
-  // $.ajax({
-  //      type: "POST",
-  //      url: './ajax.php',
-  //      data:{action:'update'},
-  //      success:function(html) {
-  //        alert(html);
-  //      }
-  //
-  // });
+    // console.log(id)
+    $.ajax({
+           type: "POST",
+           url: "update.php",
+           data: {status: '1', id: 1},
+           success: function(response) {
+                    console.log(response);
+           }
+    });
 }
 </script>

@@ -10,16 +10,13 @@
     if (!$conn) {
         echo 'Error connecting to db: ' . mysqli_connect_error();
     } else {
-        echo 'Connection established </ br>';
+        // echo 'Connection established </ br>';
     }
 
     if (isset($_GET['submit'])) {
 
-
         $toDoText = mysqli_real_escape_string($conn, $_GET['todo']);
         $date = mysqli_real_escape_string($conn, $_GET['date']);
-        // date_format($date, 'Y-m-d')
-        // $checked = mysqli_real_escape_string($conn, '0');
 
         $sql = "INSERT INTO main (`name`, `date`, `checked`) VALUES ('$toDoText', '$date', '0')";
 
