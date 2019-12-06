@@ -14,7 +14,7 @@
     //     echo 'Connection established </ br>';
     // }
 
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['done'])) {
 
         $id = mysqli_real_escape_string($conn, $_POST['id']);
 
@@ -53,9 +53,9 @@
                     </p>
                 </div>
                 <div class="col s4">
-                    <button class="btn waves-effect waves-light" type="submit" style="margin-top: 7px;" name="submit">Done</button>
+                    <button class="btn waves-effect waves-light green" type="submit" style="margin-top: 7px;" name="done">Done</button>
                 </div>
-            </div>            
+            </div>
         </form>
     </li>
 <?php    } ?>
