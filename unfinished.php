@@ -14,6 +14,19 @@
     //     echo 'Connection established </ br>';
     // }
 
+    if (isset($_POST['submit'])) {
+
+        $id = mysqli_real_escape_string($conn, $_POST['id']);
+
+        $sql = "UPDATE main set checked='1' where id='$id'";
+        if (mysqli_query($conn, $sql)) {
+          header('Location: todos.php');
+          echo 'Success';
+        } else {
+          echo 'Error: ' . mysqli_error($conn);
+        }
+    }
+
     function getAllUnfinishedTasks($conn) {
         $sql = 'SELECT * FROM main WHERE checked="0"';
         $result = mysqli_query($conn, $sql);
@@ -28,12 +41,22 @@
 
 <?php foreach ($unfinishedTasks as $task) { ?>
     <li class="collection-item">
-        <p>
-          <label>
-            <input type="checkbox" class="filled-in" data-id="'.$task['id'].'" onclick="updateStatus()"/>
-            <span><?php echo $task['name']; ?></span>
-          </label>
-        </p>
+        <form class="update" action="unfinished.php" method="post">
+            <div class="row">
+                <div class="col s8">
+                    <p>
+                      <label>
+                        <input type="checkbox" class="filled-in" data-id="'.$task['id'].'" disabled />
+                        <span><?php echo $task['name']; ?></span>
+                      </label>
+                      <input type="hidden" name="id" value="<?php echo $task['id']; ?>">
+                    </p>
+                </div>
+                <div class="col s4">
+                    <button class="btn waves-effect waves-light" type="submit" style="margin-top: 7px;" name="submit">Done</button>
+                </div>
+            </div>            
+        </form>
     </li>
 <?php    } ?>
 

@@ -30,7 +30,7 @@
     <li class="collection-item">
         <p>
           <label>
-            <input type="checkbox" class="filled-in" checked="true" />
+            <input type="checkbox" class="filled-in" disabled checked="true" />
             <span><?php echo $task['name']; ?></span>
           </label>
         </p>

@@ -13,10 +13,10 @@
         // echo 'Connection established </ br>';
     }
 
-    if (isset($_GET['submit'])) {
+    if (isset($_POST['submit'])) {
 
-        $toDoText = mysqli_real_escape_string($conn, $_GET['todo']);
-        $date = mysqli_real_escape_string($conn, $_GET['date']);
+        $toDoText = mysqli_real_escape_string($conn, $_POST['todo']);
+        $date = mysqli_real_escape_string($conn, $_POST['date']);
 
         $sql = "INSERT INTO main (`name`, `date`, `checked`) VALUES ('$toDoText', '$date', '0')";
 
@@ -43,7 +43,7 @@
         </div>
     </nav>
 
-    <form action="todos.php" method="GET">
+    <form action="todos.php" method="POST">
         <div class="container">
         <div class="row">
             <div class="col s12">
